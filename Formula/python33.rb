@@ -219,6 +219,8 @@ class Python33 < Formula
       end
     end
 
+    system bin/"easy_install-#{xy}", "gnureadline"
+
     rm_rf [bin/"pip", bin/"pip3", bin/"easy_install"]
     mv bin/"wheel", bin/"wheel#{xy}"
 
