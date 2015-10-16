@@ -8,3 +8,7 @@
 brew tap byfilip/snakefarm
 brew install python34
 ```
+
+# Bugs
+
+`readline` support in Python 3.3 isn't working. Try `pip3.3 install gnureadline` after install.
