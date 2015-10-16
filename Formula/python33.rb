@@ -160,7 +160,7 @@ class Python33 < Formula
     system "make", "quicktest" if build.include? "quicktest"
 
     # Any .app get a " 3" attached, so it does not conflict with python 2.x.
-    Dir.glob("#{prefix}/*.app") { |app| mv app, app.sub(".app", " 3.3.app") }
+    Dir.glob("#{prefix}/*.app") { |app| mv app, app.sub(".app", " #{xy}.app") }
 
     # A fix, because python and python3 both want to install Python.framework
     # and therefore we can't link both into HOMEBREW_PREFIX/Frameworks
@@ -211,7 +211,7 @@ class Python33 < Formula
 
     %w[setuptools pip wheel].each do |pkg|
       (libexec/pkg).cd do
-        system bin/"python3.3", "-s", "setup.py", "install",
+        system bin/"python#{xy}", "-s", "setup.py", "install",
                "--force", "--verbose", "--install-scripts=#{bin}",
                "--install-lib=#{site_packages}",
                "--single-version-externally-managed",
@@ -297,10 +297,10 @@ class Python33 < Formula
   def caveats
     text = <<-EOS.undent
       Pip and setuptools have been installed. To update them
-        pip3 install --upgrade pip setuptools
+        pip#{xy} install --upgrade pip setuptools
 
       You can install Python packages with
-        pip3 install <package>
+        pip#{xy} install <package>
 
       They will install into the site-package directory
         #{site_packages}
@@ -325,7 +325,7 @@ class Python33 < Formula
     system "#{bin}/python#{xy}", "-c", "import sqlite3"
     # Check if some other modules import. Then the linked libs are working.
     system "#{bin}/python#{xy}", "-c", "import tkinter; root = tkinter.Tk()"
-    system bin/"pip3.3", "list"
+    system bin/"pip#{xy}", "list"
   end
 end
 
