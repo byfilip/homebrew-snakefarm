@@ -1,6 +1,8 @@
 # homebrew-snakefarm
 
-`altinstall` formulas for Python versions older than most recent minor version in Homebrew.
+Homebrew formulas for Python versions older than most recent minor version in Homebrew itself.
+
+These versions are installed using the `altinstall` scheme, which makes their executables available only as `pythonX.Y`, in order to not interfere with the standard `python` and `python3` executables. Each minor version has its own `site-packages`, and a corresponding `pipX.Y` executable.
 
 Available versions:
 
